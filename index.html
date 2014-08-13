@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -42,167 +42,92 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
+				<section >
+					<h1>Node.js and SNMP</h1>
+					<h3>for fun and profit</h3>
 					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+					<small>Presenter by <a href="http://www.atlantageek.com">Tommie Jones</a> / <a href="http://twitter.com/atlantageek">@atlantageek</a> / <a href="mailto:atlantageek@gmail.com">tj@atlantageek.com</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
+			       		<section>
+					<h2>About SNMP</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+					<ul>
+						<li>Simple Network Management Protocol</li>
+						<li>RFC 1065 released in 1988</li>
+						<li>Three major version released. V1 and V2c are most important. V3 finally fixes security.</li>
+						<li>Is very hierarchial</li>
+					</ul>
+					<a href="#" class="navigate-down">down</a>
 					</p>
 
 					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+						The web was still a gleam in Tim Berners-Lee eye.
+						Weak security provided by a read only and write only community string transmitted in clear text.
+						Security is often provided by firewalls.
 					</aside>
+					</section>
+			       		<section>
+						<h2>SNMP Terms</h2>
+						<ul>
+							<li><span style="color:white">Snmp Manager</span> - data collector</li>
+							<li><span style="color:white">Snmp Agent</span> - network element</li>
+							<li><span style="color:white">OId</span> - Object Identifiers<small style="color:white">[Iso(1).org(3).dod(6).internet(1).private(4).transition(868).products(2).chassis(4).card(1).slotCps(2)­.-cpsSlotSummary(1).cpsModuleTable(1).cpsModuleEntry(1).cpsModuleModel(3).3562.3]</small></li>
+							<li><span style="color:white">MIB</span> - Management Information Base</li>
+						</ul>
+					        <aside class="notes">
+							manager - A PC that collects data from network elements
+							agent -   the device youre monitoring.
+						</aside>
+					</section>
+					<section>
+						<h2>Example Hierarchy</h2>
+						<img width="900" src="http://www.networkmanagementsoftware.com/wp-content/uploads/SNMP_OID_MIB_Tree.png">
+					</section>
+			       		<section>
+						<h2>SNMP Resources</h2>
+						<ul>
+							<li>http://en.wikipedia.org/wiki/Simple_Network_Management_Protocol</li>
+							<li>http://tools.cisco.com/Support/SNMP/do/BrowseOID.do</li>
+							<li>http://www.oidview.com/mibs</li>
+						</ul>
+					        <aside class="notes">
+							It would be great if someone developed a modern online resource for mibs.
+						</aside>
+					</section>
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
+					<h2>Supports SNMP</h2>
 					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
+						<li>Network Routers</li>
+						<li>Any linux machine</li>
+						<li>MongoDB, Oracle, Postgres and other databases</li>
+						<li>Security Cameras</li>
+						<li>Power Supplies</li>
+						<li>Temperature and Humidity Monitoring</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?#/themes">Default</a> -
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> <br>
-						<a href="?theme=moon#/themes">Moon</a> -
-						<a href="?theme=solarized#/themes">Solarized</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
+					<h2>SNMP Solutions</h2>
+					<ul>
+						<li>Scripts (no visualization)</li>
+						<li>Enterprise NMS (nagios)</li>
+						<li>Windows clients(single user and simplistic)</li>
+						<li>Lamp/Rails/Python (minimal real time data and complex)</li>
+					</ul>
 				</section>
 
 				<section>
-					<h2>Global State</h2>
+					<h2>So Why Node.js</h2>
 					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
+					  Event driven programming is great when serving two I/O masters.
 					</p>
-				</section>
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
 					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 Reveal.addEventListener( 'customevent', function() {
 	console.log( '"customevent" has fired' );
