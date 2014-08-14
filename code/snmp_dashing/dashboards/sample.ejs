@@ -1,0 +1,18 @@
+<div class="gridster">
+  <ul>
+
+    <li data-row="0" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="cpu1" data-view="Meter" data-title="CPU 1 minute load" data-min="0" data-max="100"></div>
+    </li>
+    <li data-row="0" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="cpu2" data-view="Meter" data-title="CPU 5 minute load" data-min="0" data-max="100"></div>
+    </li>
+    <li data-row="0" data-col="3" data-sizex="1" data-sizey="1">
+      <div data-id="cpu3" data-view="Meter" data-title="CPU 15 minute load" data-min="0" data-max="100"></div>
+    </li>
+
+  </ul>
+  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' -H "Content-Type: application/json" http://<%=request.header('host')%>/widgets/welcome</div></center>
+</div>
+<%- contentFor('title') %>
+My super sweet dashboard
