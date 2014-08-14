@@ -56,7 +56,7 @@
 					<ul>
 						<li>Simple Network Management Protocol</li>
 						<li>RFC 1065 released in 1988</li>
-						<li>Three major version released. V1 and V2c are most important. V3 finally fixes security.</li>
+						<li>Three major version released. V1 and V2c V3. </li>
 						<li>Is very hierarchial</li>
 					</ul>
 					<a href="#" class="navigate-down">down</a>
@@ -85,6 +85,14 @@
 					<section>
 						<h2>Example Hierarchy</h2>
 						<img width="900" src="http://www.networkmanagementsoftware.com/wp-content/uploads/SNMP_OID_MIB_Tree.png">
+					</section>
+					<section>
+						<h2>Three types of SNMP interactions</h2>
+						<ul>
+                                                  <li>Traps</li>
+                                                  <li>Get</li>
+                                                  <li>Set</li>
+                                                </ul>
 					</section>
 			       		<section>
 						<h2>SNMP Resources</h2>
@@ -169,7 +177,7 @@ session.get({ oid: target_oid, host: 'localhost', community: 'public' },
 					</code></pre>
 				</section>
 				<section>
-					<h2>Serving multiple masters.</h2>
+					<h2>Integrate multiple services</h2>
 					<p>
 					Supply a web interface to your snmp tool.
 					</p>
@@ -198,6 +206,50 @@ function query_snmp() {
     });
 }
 setInterval(query_snmp, 1000);
+
+					</code></pre>
+				</section>
+				<section>
+					<h2>Serving two masters</h2>
+					<p>
+					Listening for web connections and snmp traps.
+					</p>
+
+					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var os = require('os');
+var snmp = require('snmpjs');
+var http = require('http');
+var express = require('express');
+var app = express();
+
+var bunyan = require('bunyan');
+var result=[];
+
+app.use(express.static('public'));
+app.get('/get_today_count', function(req, res) {
+   console.log(result.length);
+  res.send(result.length.toString());
+});
+
+var server = app.listen(3001, function() {
+  console.log('Listening on port %d', server.address().port);
+});
+
+var log = new bunyan({
+      name: 'snmpd',
+          level: 'trace'
+});
+
+var trapd = snmp.createTrapListener({log: log});
+
+trapd.on('trap', function(msg){
+       result.push(msg);
+   var now = new Date();
+   console.log("Trap Received " + now);
+   console.log(result.length);
+   });
+
+trapd.bind({family: 'udp4', port: 162});
 
 					</code></pre>
 				</section>
@@ -741,10 +793,6 @@ Here's an example of an exported presentation that's been uploaded to SlideShare
 
 <p>Copyright (C) 2013 Hakim El Hattab, <a href="http://hakim.se">http://hakim.se</a></p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/hakimel">hakimel</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
     
